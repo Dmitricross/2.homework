@@ -1,6 +1,6 @@
 <?php require_once("header.php"); ?>
 
- 
+
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -78,7 +78,7 @@
  </div>
 
 
-<h2 style="color:#F5F1ED">How are you satisfied with my work?</h2>
+<h2 style="color:purple">How are you satisfied with my work?</h2>
 		
 			<select name="result">
 				<option value="Satisfied"selected>Satisfied</option>
@@ -86,10 +86,12 @@
 				<option value="Dissatisfied">Dissatisfied</option>
 			</select><br>
 	
-	<h2 style="color:#F5F1ED">Get delivery notification</h2>	
+	<h2 style="color:purple>Get delivery notification</h2>	
 	
-			<input style="color:#000000" type="radio"name="subject"value="Recieve e-mail">Recieve
+			<input style="color:purple" type="radio"name="notification"value="Recieve e-mail">Recieve
+			<input type="radio"name="subject"value="Recieve>Recieve
 			<input type="radio"name="subject"value="Dont recieve">Do not recieve
+
 		<br><br>
 
 <div class="row">
@@ -178,7 +180,7 @@ if(isset($_GET["result"])){
 		
 		}else{
 			//its not empty
-		echo "Result: ".$_GET["result"]."<br>";
+		echo "result: ".$_GET["result"]."<br>";
 	}
 }
 
@@ -195,6 +197,22 @@ if(isset($_GET["message"])){
 		}else{
 			//its not empty
 		echo "Message: ".$_GET["message"]."<br>";
+	}
+	
+	
+}
+if(isset($_GET["message"])){
+	
+	//only if there is message in the URL
+	//echo "there is a message";
+	
+	if(empty($_GET["notification"])){
+		//it is empty
+		echo "Please mark notification!";
+		
+		}else{
+			//its not empty
+		echo "notification: ".$_GET["notification"]."<br>";
 	}
 	
 	
@@ -217,7 +235,7 @@ if(isset($_GET["message"])){
 	
 	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_dmikab");
 	
-	$stmt = $mysql->prepare("INSERT INTO homework (First_Name, Last_Name, E_mail, Message) VALUES (?, ?, ?, ?)" );
+	$stmt = $mysql->prepare("INSERT INTO homework (First_Name, Last_Name, E_mail, Message, result, notification) VALUES (?, ?, ?, ?, ?, ?)" );
 	
 	echo $stmt->error;
 	
@@ -225,7 +243,7 @@ if(isset($_GET["message"])){
 	//s - string, data or smth that is based on characters and
 	//i - intiger, number
 	// d - decimal, float
-	$stmt->bind_param("ssss", $_GET["firstname"], $_GET["lastname"], $_GET["e_mail"], $_GET["message"]);
+	$stmt->bind_param("ssssss", $_GET["firstname"], $_GET["lastname"], $_GET["e_mail"], $_GET["message"], $_GET["result"], $_GET["notification"]);
 	
 	//save
 	
