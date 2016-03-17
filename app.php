@@ -1,41 +1,86 @@
+<?php require_once("header.php"); ?>
 
-<html>
-<head>
-<body bgcolor="#908483"> 
-<img src="http://www.tlu.ee/UserFiles/thumbs/__thumb_-2-BFM-logo-suur-EST.jpg";>
-<h1 style="color:#e4e4e4"> Leave your feedback </h1>
-</head>
-<style>
-
-label  {color: #e4e4e4;}
-echo {color: #e4e4e4;}
-</style>
-   
-  <body> 
-
-<a href ="table2.php">table</a> 
  
-<form method="get">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="app.php">App page <span class="sr-only">(current)</span></a></li>
+      <li><a href="table2.php">Table <span class="sr-only">(current)</span></a></li>
+   
+      
+          </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 
+ <div class="container">
+
+ <h1>Homework app</h1>
+
+<form>
+<div class="row">
+	<div class="col-md-3">
+	<div class="form-group">
+	<label for="First name">First name:</label>
+	<input name="firstname" id="First name" type="text" class="form-control">
+
+	 </div>
+	 </div>
+ </div>
 
 
+<div class="row">
+	<div class="col-md-3">
+	<div class="form-group">
+	<label for="Last name">Last name:</label>
+	<input name="lastname" id="Last name" type="text" class="form-control">
 
-	<label for="firstname">First name<label><br>
-  <input type="text" name="firstname"><br>
-  
- <label for="lastname">Last name<label><br>
-  <input type="text" name="lastname"><br>
 
- <label for="e-mail">E-mail<label><br>
-  <input type="text" name="e-mail"><br><br>
-  
-<label for="message">Message:*<label><br>
-<input type="text" name="message"><br><br>
+	 </div>
+	 </div>
+ </div>
+
+
+<div class="row">
+	<div class="col-md-3">
+	<div class="form-group">
+	<label for="E_mail">E-mail:</label>
+	<input name="e_mail" id="E_mail" type="text" class="form-control">
+
+	 </div>
+	 </div>
+ </div>
+
+
+ <div class="row">
+	<div class="col-md-3">
+	<div class="form-group">
+	<label for="Message">Message:</label>
+	<input name="message" id="Message" type="text" class="form-control">
+
+	 </div>
+	 </div>
+ </div>
+
 
 <h2 style="color:#F5F1ED">How are you satisfied with my work?</h2>
 		
-			<select name="Result">
+			<select name="result">
 				<option value="Satisfied"selected>Satisfied</option>
 				<option value="Neutral">Neutral</option>
 				<option value="Dissatisfied">Dissatisfied</option>
@@ -43,19 +88,29 @@ echo {color: #e4e4e4;}
 	
 	<h2 style="color:#F5F1ED">Get delivery notification</h2>	
 	
-	<form style="color:#e4e4e4">
-			<input style="color:#e4e4e4" type="radio"name="subject"value="Recieve e-mail">Recieve
+			<input style="color:#000000" type="radio"name="subject"value="Recieve e-mail">Recieve
 			<input type="radio"name="subject"value="Dont recieve">Do not recieve
-		</form><br><br>
+		<br><br>
+
+<div class="row">
+	<div class="col-md-3" "col-sm-6">
+	<input class="btn btn-success hidden-xs" type="submit" value="Save data 1"></input>
+	<input class="btn btn-success btn-block visible-xs-block" type="submit" value="Save data 2"></input>
+	 </div>
+</div>	
+
+
+
+</div>
+</form>
+
+
 
 	
 	
 
 <!--This is the save button -->
-<input type="submit" value="Submit feedback"
 
-	
-<form><br>
 
 <?php
 
@@ -75,33 +130,10 @@ require_once("../../config.php");
 	// 4 database
 	
 	
-	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_dmikab");
-	
-	$stmt = $mysql->prepare("INSERT INTO homework (First_Name, Last_Name, E_mail, Message) VALUES (?, ?, ?, ?)" );
-	
-	echo $stmt->error;
-	
-	//we are replacing question marks with values
-	//s - string, data or smth that is based on characters and
-	//i - intiger, number
-	// d - decimal, float
-	$stmt->bind_param("ssss", $_GET["firstname"], $_GET["lastname"], $_GET["e-mail"], $_GET["message"]);
-	
-	//save
-	
-	if($stmt->execute()){
-		
-	echo	"saved succesefully";
-	}else{
-		
-		echo $stmt->error;
-		
-		
-		}	
 	
 	
 	
-
+$everything_was_okay = true;
 
 
 if(empty($_GET["firstname"])){
@@ -122,31 +154,31 @@ if(empty($_GET["lastname"])){
 		echo "Last name: ".$_GET["lastname"]."<br>";
 	}
 
-if(isset($_GET["e-mail"])){
+if(isset($_GET["e_mail"])){
 	
 	
 	
-	if(empty($_GET["e-mail"])){
+	if(empty($_GET["e_mail"])){
 		//it is empty
 		echo "Please enter e-mail!";
 		
 		}else{
 			//its not empty
-		echo "E-mail: ".$_GET["e-mail"]."<br>";
+		echo "E-mail: ".$_GET["e_mail"]."<br>";
 	}
 }
 
-if(isset($_GET["Result"])){
+if(isset($_GET["result"])){
 	
 	
 	
-	if(empty($_GET["Result"])){
+	if(empty($_GET["result"])){
 		//it is empty
 		echo "Please enter the result!";
 		
 		}else{
 			//its not empty
-		echo "Result: ".$_GET["Result"]."<br>";
+		echo "Result: ".$_GET["result"]."<br>";
 	}
 }
 
@@ -167,7 +199,45 @@ if(isset($_GET["message"])){
 	
 	
 }
-
+ if ($everything_was_okay == true) {
+	
+	echo "Saving to database ...";
+	
+	
+	//connection with username and password
+	//access username from config
+	//echo $db_username;
+	
+	// 1 servername
+	// 2 username
+	// 3 password
+	// 4 database
+	
+	
+	
+	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_dmikab");
+	
+	$stmt = $mysql->prepare("INSERT INTO homework (First_Name, Last_Name, E_mail, Message) VALUES (?, ?, ?, ?)" );
+	
+	echo $stmt->error;
+	
+	//we are replacing question marks with values
+	//s - string, data or smth that is based on characters and
+	//i - intiger, number
+	// d - decimal, float
+	$stmt->bind_param("ssss", $_GET["firstname"], $_GET["lastname"], $_GET["e_mail"], $_GET["message"]);
+	
+	//save
+	
+	if($stmt->execute()){
+		
+	echo	"saved succesefully";
+	}else{
+		
+		echo $stmt->error;
+		
+		
+		}	
 
 
 
@@ -180,7 +250,7 @@ if(isset($_GET["message"])){
 //echo "My message is ".$my_message." and is to ".$to." and is from ".$from;
 
 
-
+}
 
 
 
