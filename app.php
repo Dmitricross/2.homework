@@ -1,6 +1,32 @@
 <?php require_once("header.php"); ?>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="app.php">App page <span class="sr-only">(current)</span></a></li>
+      <li><a href="table2.php">Table <span class="sr-only">(current)</span></a></li>
+   
+      
+          </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+ <div class="container">
 
 
 
@@ -61,17 +87,17 @@ if(isset($_GET["e_mail"])){
 		echo "E-mail: ".$_GET["e_mail"]."<br>";
 	}
 }
-if(isset($_GET["result"])){
+if(isset($_GET["dropdown-menu"])){
 	
 	
 	
-	if(empty($_GET["result"])){
+	if(empty($_GET["dropdown-menu"])){
 		//it is empty
 		echo "Please enter the result!";
 		
 		}else{
 			//its not empty
-		echo "result: ".$_GET["result"]."<br>";
+		echo "dropdown-menu: ".$_GET["dropdown-menu"]."<br>";
 	}
 }
 //check if there is variable in the URL
@@ -154,33 +180,7 @@ if(isset($_GET["message"])){
 }
 ?>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="app.php">App page <span class="sr-only">(current)</span></a></li>
-      <li><a href="table2.php">Table <span class="sr-only">(current)</span></a></li>
-   
-      
-          </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
- <div class="container">
 
  <h1>Homework app</h1>
 
@@ -230,26 +230,33 @@ if(isset($_GET["message"])){
  </div>
 
 
-<h2 style="color:purple">How are you satisfied with my work?</h2>
+<h2 style="color:black">How are you satisfied with my work?</h2>
 		
-			<select name="result">
-				<option value="Satisfied"selected>Satisfied</option>
-				<option value="Neutral">Neutral</option>
-				<option value="Dissatisfied">Dissatisfied</option>
-			</select><br>
+			<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Result
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Satisfied</a></li>
+    <li><a href="#">Dissatisfied</a></li>
+    <li><a href="#">Neutral</a></li>
+   
+  </ul>
+</div>
 	
-	<h2 style="color:purple>Get delivery notification</h2>	
+	<h2 style="color:black>Get delivery notification</h2>	
 	
-			<input style="color:purple" type="radio"name="notification"value="Recieve e-mail">Recieve
-			<input type="radio"name="subject"value="Recieve>Recieve
-			<input type="radio"name="subject"value="Dont recieve">Do not recieve
+			<input style="color:black" type="radio" name="notification" value="Recieve e-mail">Recieve
+			<input type="radio" name="subject" value="Recieve>Recieve
+			<input type="radio" name="subject" value="Dont recieve">Do not recieve
 
 		<br><br>
 
 <div class="row">
 	<div class="col-md-3" "col-sm-6">
-	<input class="btn btn-success hidden-xs" type="submit" value="Save data 1"></input>
-	<input class="btn btn-success btn-block visible-xs-block" type="submit" value="Save data 2"></input>
+	<input class="btn btn-primary hidden-xs" type="submit" value="Save data 1"></input>
+	<input class="btn btn-primary btn-block visible-xs-block" type="submit" value="Save data 2"></input>
 	 </div>
 </div>	
 

@@ -38,7 +38,7 @@
 		$stmt->close();
 	}
 	
-	$stmt = $mysql->prepare("SELECT First_Name, Last_Name, E_mail, Message, result, notification FROM homework WHERE deleted is NULL ORDER BY created DESC LIMIT 10");
+	$stmt = $mysql->prepare("SELECT First_Name, Last_Name, E_mail, Message, result, notification FROM homework WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
 	
 	//if error in sentense
 	
