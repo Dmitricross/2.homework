@@ -2,6 +2,158 @@
 
 
 
+
+
+
+	
+	
+
+<!--This is the save button -->
+
+
+<?php
+require_once("../../config.php");
+//**************....
+//to field validation
+//******************
+	
+	
+	//connection with username and password
+	//access username from config
+	//echo $db_username;
+	
+	// 1 servername
+	// 2 username
+	// 3 password
+	// 4 database
+	
+	
+	
+	
+	
+$everything_was_okay = true;
+if(empty($_GET["firstname"])){
+		//it is empty
+		echo "Please enter the name!";
+		
+		}else{
+			//its not empty
+		echo "Fist name: ".$_GET["firstname"]."<br>";
+	}
+if(empty($_GET["lastname"])){
+		//it is empty
+		echo "Please enter the last name!";
+		
+		}else{
+			//its not empty
+		echo "Last name: ".$_GET["lastname"]."<br>";
+	}
+if(isset($_GET["e_mail"])){
+	
+	
+	
+	if(empty($_GET["e_mail"])){
+		//it is empty
+		echo "Please enter e-mail!";
+		
+		}else{
+			//its not empty
+		echo "E-mail: ".$_GET["e_mail"]."<br>";
+	}
+}
+if(isset($_GET["result"])){
+	
+	
+	
+	if(empty($_GET["result"])){
+		//it is empty
+		echo "Please enter the result!";
+		
+		}else{
+			//its not empty
+		echo "result: ".$_GET["result"]."<br>";
+	}
+}
+//check if there is variable in the URL
+if(isset($_GET["message"])){
+	
+	//only if there is message in the URL
+	//echo "there is a message";
+	
+	if(empty($_GET["message"])){
+		//it is empty
+		echo "Please enter the message!";
+		
+		}else{
+			//its not empty
+		echo "Message: ".$_GET["message"]."<br>";
+	}
+	
+	
+}
+if(isset($_GET["message"])){
+	
+	//only if there is message in the URL
+	//echo "there is a message";
+	
+	if(empty($_GET["notification"])){
+		//it is empty
+		echo "Please mark notification!";
+		
+		}else{
+			//its not empty
+		echo "notification: ".$_GET["notification"]."<br>";
+	}
+	
+	
+}
+ if ($everything_was_okay == true) {
+	
+	echo "Saving to database ...";
+	
+	
+	//connection with username and password
+	//access username from config
+	//echo $db_username;
+	
+	// 1 servername
+	// 2 username
+	// 3 password
+	// 4 database
+	
+	
+	
+	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_dmikab");
+	
+	$stmt = $mysql->prepare("INSERT INTO homework (First_Name, Last_Name, E_mail, Message, result, notification) VALUES (?, ?, ?, ?, ?, ?)" );
+	
+	echo $stmt->error;
+	
+	//we are replacing question marks with values
+	//s - string, data or smth that is based on characters and
+	//i - intiger, number
+	// d - decimal, float
+	$stmt->bind_param("ssssss", $_GET["firstname"], $_GET["lastname"], $_GET["e_mail"], $_GET["message"], $_GET["result"], $_GET["notification"]);
+	
+	//save
+	
+	if($stmt->execute()){
+		
+	echo	"saved succesefully";
+	}else{
+		
+		echo $stmt->error;
+		
+		
+		}	
+//Getting the message from address
+//$my_message = $_GET["message"];
+//$to = $_GET["to"];
+//$from = $_GET["from"];
+//echo "My message is ".$my_message." and is to ".$to." and is from ".$from;
+}
+?>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -105,175 +257,6 @@
 
 </div>
 </form>
-
-
-
-	
-	
-
-<!--This is the save button -->
-
-
-<?php
-
-require_once("../../config.php");
-//**************....
-//to field validation
-//******************
-	
-	
-	//connection with username and password
-	//access username from config
-	//echo $db_username;
-	
-	// 1 servername
-	// 2 username
-	// 3 password
-	// 4 database
-	
-	
-	
-	
-	
-$everything_was_okay = true;
-
-
-if(empty($_GET["firstname"])){
-		//it is empty
-		echo "Please enter the name!";
-		
-		}else{
-			//its not empty
-		echo "Fist name: ".$_GET["firstname"]."<br>";
-	}
-
-if(empty($_GET["lastname"])){
-		//it is empty
-		echo "Please enter the last name!";
-		
-		}else{
-			//its not empty
-		echo "Last name: ".$_GET["lastname"]."<br>";
-	}
-
-if(isset($_GET["e_mail"])){
-	
-	
-	
-	if(empty($_GET["e_mail"])){
-		//it is empty
-		echo "Please enter e-mail!";
-		
-		}else{
-			//its not empty
-		echo "E-mail: ".$_GET["e_mail"]."<br>";
-	}
-}
-
-if(isset($_GET["result"])){
-	
-	
-	
-	if(empty($_GET["result"])){
-		//it is empty
-		echo "Please enter the result!";
-		
-		}else{
-			//its not empty
-		echo "result: ".$_GET["result"]."<br>";
-	}
-}
-
-//check if there is variable in the URL
-if(isset($_GET["message"])){
-	
-	//only if there is message in the URL
-	//echo "there is a message";
-	
-	if(empty($_GET["message"])){
-		//it is empty
-		echo "Please enter the message!";
-		
-		}else{
-			//its not empty
-		echo "Message: ".$_GET["message"]."<br>";
-	}
-	
-	
-}
-if(isset($_GET["message"])){
-	
-	//only if there is message in the URL
-	//echo "there is a message";
-	
-	if(empty($_GET["notification"])){
-		//it is empty
-		echo "Please mark notification!";
-		
-		}else{
-			//its not empty
-		echo "notification: ".$_GET["notification"]."<br>";
-	}
-	
-	
-}
- if ($everything_was_okay == true) {
-	
-	echo "Saving to database ...";
-	
-	
-	//connection with username and password
-	//access username from config
-	//echo $db_username;
-	
-	// 1 servername
-	// 2 username
-	// 3 password
-	// 4 database
-	
-	
-	
-	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_dmikab");
-	
-	$stmt = $mysql->prepare("INSERT INTO homework (First_Name, Last_Name, E_mail, Message, result, notification) VALUES (?, ?, ?, ?, ?, ?)" );
-	
-	echo $stmt->error;
-	
-	//we are replacing question marks with values
-	//s - string, data or smth that is based on characters and
-	//i - intiger, number
-	// d - decimal, float
-	$stmt->bind_param("ssssss", $_GET["firstname"], $_GET["lastname"], $_GET["e_mail"], $_GET["message"], $_GET["result"], $_GET["notification"]);
-	
-	//save
-	
-	if($stmt->execute()){
-		
-	echo	"saved succesefully";
-	}else{
-		
-		echo $stmt->error;
-		
-		
-		}	
-
-
-
-
-//Getting the message from address
-//$my_message = $_GET["message"];
-//$to = $_GET["to"];
-//$from = $_GET["from"];
-
-//echo "My message is ".$my_message." and is to ".$to." and is from ".$from;
-
-
-}
-
-
-
-?>
-
 
 
 

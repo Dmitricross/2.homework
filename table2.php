@@ -30,7 +30,7 @@
 			echo "deleted successfully";
 		}else{
 
-			echo $stmt->errror;
+			echo $stmt->error;
 		}
 
 		//close the statement, so others can use connection
@@ -38,13 +38,13 @@
 		$stmt->close();
 	}
 	
-	$stmt = $mysql->prepare("SELECT id, First_Name, Last_Name, E_mail, Message, result, notification FROM homework WHERE deleted is NULL ORDER BY created DESC LIMIT 10");
+	$stmt = $mysql->prepare("SELECT First_Name, Last_Name, E_mail, Message, result, notification FROM homework WHERE deleted is NULL ORDER BY created DESC LIMIT 10");
 	
 	//if error in sentense
 	
 	echo $mysql->error;
 	
-	$stmt->bind_result($id, $First_Name, $Last_Name, $E_mail, $Message, $result, $notification);
+	$stmt->bind_result( $First_Name, $Last_Name, $E_mail, $Message, $result, $notification);
 	
 	$stmt->execute();
 
@@ -52,7 +52,6 @@
 
 $table_html .="<table class='table table-striped'>";
 $table_html .="<tr>";
-$table_html .="<th>id</th>";
 $table_html .="<th>Fist name</th>";
 $table_html .="<th>Last Name</th>";
 $table_html .="<th>E-mail</th>";
@@ -70,7 +69,7 @@ $table_html .="</tr>";
 
 
 		$table_html .="<tr>";
-		$table_html .= "<td>".$id."</td>"; //add column
+	
 		$table_html .= "<td>".$First_Name."</td>";
 		$table_html .= "<td>".$Last_Name."</td>";
 		$table_html .= "<td>".$E_mail."</td>";
