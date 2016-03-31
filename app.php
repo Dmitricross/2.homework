@@ -1,6 +1,6 @@
 <?php require_once("header.php"); ?>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -232,18 +232,7 @@ if(isset($_GET["notification"])){
 
 <h2 style="color:black">How are you satisfied with my work?</h2>
 		
-			<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Result
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="#">Satisfied</a></li>
-    <li><a href="#">Dissatisfied</a></li>
-    <li><a href="#">Neutral</a></li>
-   
-  </ul>
-</div>
+			
 
 <select name="result">
 	<option>Satisfied</option>
@@ -253,9 +242,9 @@ if(isset($_GET["notification"])){
 	
 	<h2 style="color:black">Get delivery notification</h2>	
 	
-			Recieve e-mail
+			
 
-			Recieve
+			
 			<input type="radio" name="notification" value="Recieve">Recieve
 			<input type="radio" name="notification" value="Dont recieve">Do not recieve
 

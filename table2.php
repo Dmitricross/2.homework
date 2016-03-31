@@ -50,7 +50,7 @@
 
 	$table_html = "";
 
-$table_html .="<table class='table table-striped'>";
+$table_html .="<table class='table table-hover'>";
 $table_html .="<tr>";
 $table_html .="<th>Fist name</th>";
 $table_html .="<th>Last Name</th>";
@@ -93,7 +93,7 @@ $table_html .="</tr>";
 
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
