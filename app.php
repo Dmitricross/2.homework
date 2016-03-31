@@ -87,17 +87,17 @@ if(isset($_GET["e_mail"])){
 		echo "E-mail: ".$_GET["e_mail"]."<br>";
 	}
 }
-if(isset($_GET["dropdown-menu"])){
+if(isset($_GET["result"])){
 	
 	
 	
-	if(empty($_GET["dropdown-menu"])){
+	if(empty($_GET["result"])){
 		//it is empty
 		echo "Please enter the result!";
 		
 		}else{
 			//its not empty
-		echo "dropdown-menu: ".$_GET["dropdown-menu"]."<br>";
+		echo "dropdown-menu: ".$_GET["result"]."<br>";
 	}
 }
 //check if there is variable in the URL
@@ -117,7 +117,7 @@ if(isset($_GET["message"])){
 	
 	
 }
-if(isset($_GET["message"])){
+if(isset($_GET["notification"])){
 	
 	//only if there is message in the URL
 	//echo "there is a message";
@@ -244,12 +244,20 @@ if(isset($_GET["message"])){
    
   </ul>
 </div>
+
+<select name="result">
+	<option>Satisfied</option>
+	<option>Dissatisfied</option>
+	<option>Neutral</option>
+</select>
 	
-	<h2 style="color:black>Get delivery notification</h2>	
+	<h2 style="color:black">Get delivery notification</h2>	
 	
-			<input style="color:black" type="radio" name="notification" value="Recieve e-mail">Recieve
-			<input type="radio" name="subject" value="Recieve>Recieve
-			<input type="radio" name="subject" value="Dont recieve">Do not recieve
+			Recieve e-mail
+
+			Recieve
+			<input type="radio" name="notification" value="Recieve">Recieve
+			<input type="radio" name="notification" value="Dont recieve">Do not recieve
 
 		<br><br>
 

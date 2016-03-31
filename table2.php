@@ -38,13 +38,13 @@
 		$stmt->close();
 	}
 	
-	$stmt = $mysql->prepare("SELECT First_Name, Last_Name, E_mail, Message, result, notification FROM homework WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
+	$stmt = $mysql->prepare("SELECT id, First_Name, Last_Name, E_mail, Message, result, notification FROM homework WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
 	
 	//if error in sentense
 	
 	echo $mysql->error;
 	
-	$stmt->bind_result( $First_Name, $Last_Name, $E_mail, $Message, $result, $notification);
+	$stmt->bind_result( $id, $First_Name, $Last_Name, $E_mail, $Message, $result, $notification);
 	
 	$stmt->execute();
 
@@ -69,14 +69,13 @@ $table_html .="</tr>";
 
 
 		$table_html .="<tr>";
-	
-		$table_html .= "<td>".$First_Name."</td>";
+	$table_html .= "<td>".$First_Name."</td>";
 		$table_html .= "<td>".$Last_Name."</td>";
 		$table_html .= "<td>".$E_mail."</td>";
 		$table_html .= "<td>".$Message."</td>";
 		$table_html .= "<td>".$result."</td>";
 		$table_html .= "<td>".$notification."</td>";
-		$table_html .= "<td><a class= 'btn btn-danger' a href = '?delete=".$id."'>x</a></td>";
+		$table_html .= "<td><a class='btn btn-danger' href='?delete=".$id."'>x</a></td>";
 		$table_html .="</tr>"; //end row
 		
 		//DO something for EACH ROW
